@@ -11,4 +11,10 @@ function ($scope, $rootScope, FormService) {
     });
   };
 
+  $scope.decryption = function () {
+    FormService.Decryption($scope.decryptionInfo, function (response) {
+        $scope.decryptionInfoResult = response;
+    });
+  };
+
 }]);
