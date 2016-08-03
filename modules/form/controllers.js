@@ -2,6 +2,13 @@
 
 angular.module('Form')
 
-.controller('FormController',['$scope',function ($scope) {
+.controller('FormController', ['$scope', '$rootScope','FormService',
+function ($scope, $rootScope, FormService) {
+
+  $scope.encryption = function () {
+    FormService.Encryption($scope.encryptionInfo, function (response) {
+        $scope.encryptionInfoResult = response;
+    });
+  };
 
 }]);

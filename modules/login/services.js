@@ -24,7 +24,7 @@ function ($http, $cookieStore, $rootScope, $timeout) {
 
   service.SetCredentials = function (username, password) {
 
-  var authdata = username + ':' + password);
+  var authdata = username + ':' + password;
 
     $rootScope.globals = {
       currentUser: {
