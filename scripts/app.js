@@ -3,7 +3,7 @@
 // modules
 angular.module('Login', []);
 angular.module('Form', []);
-angular.module('angularCryptoExample', ['Login','Form','ngRoute','ngCookies'])
+angular.module('angularCryptoExample', ['Login','Form','ngRoute','ngCookies','ngStorage'])
 
 .config(['$routeProvider', function ($routeProvider) {
 

@@ -2,8 +2,8 @@
 
 angular.module('Login')
 
-.factory('LoginService', ['$http', '$cookieStore', '$rootScope', '$timeout',
-function ($http, $cookieStore, $rootScope, $timeout) {
+.factory('LoginService', ['$http', '$cookieStore', '$rootScope', '$timeout','$localStorage',
+function ($http, $cookieStore, $rootScope, $timeout,$localStorage) {
 
   var service = {};
 
@@ -24,12 +24,12 @@ function ($http, $cookieStore, $rootScope, $timeout) {
 
   service.SetCredentials = function (username, password) {
 
-  var authdata = username + ':' + password;
+  var authdata = CryptoJS.AES.encrypt(username + ':' + password, 'passphrase').toString();
 
     $rootScope.globals = {
       currentUser: {
         username: username,
-        password: password
+        authdata: authdata
       }
     };
 
@@ -41,6 +41,7 @@ function ($http, $cookieStore, $rootScope, $timeout) {
     $rootScope.globals = {};
     $cookieStore.remove('globals');
     $http.defaults.headers.common.Login = 'Basic ';
+    $localStorage.$reset();
   };
 
   return service;
