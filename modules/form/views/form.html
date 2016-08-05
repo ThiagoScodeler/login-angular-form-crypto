@@ -1,56 +1,68 @@
-<p>Welcome! You are logged in.</p>
-<p><a href="#/login">Logout</a></a></p>
-
-<!--Encryption Form-->
-<form name="form" ng-submit="encryption()" role="form" class="form-horizontal">
-<fieldset>
-
-<legend>Encryption Form</legend>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="encryptionInfo">Encryption Information:</label>
-  <div class="col-md-4">
-  <input id="encryptionInfo" name="encryptionInfo" type="text" placeholder="Insert the information to be encrypted" class="form-control input-md" ng-model="encryptionInfo" required>
-  <span ng-show="form.encryptionInfo.$dirty && form.encryptionInfo.$error.required" class="help-block alert-danger">Info is required</span>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">Angular Cryptography Example</span>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li ><a href="#/login"><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> Logout</a></li>
+      </ul>
+    </div>
   </div>
+</nav>
+
+<div class="template">
+  <!--Encryption Form-->
+  <form name="form" ng-submit="encryption()" role="form" class="form-horizontal">
+    <fieldset>
+      <legend><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span> Encryption Form</legend>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="encryptionInfo">Information:</label>
+        <div class="col-md-4">
+          <input id="encryptionInfo" name="encryptionInfo" type="text" placeholder="Insert the information to be encrypted" class="form-control input-md" ng-model="encryptionInfo" required>
+          <span ng-show="form.encryptionInfo.$dirty && form.encryptionInfo.$error.required" class="help-block alert-danger">Info is required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="encryptionButton"></label>
+        <div class="col-md-4">
+          <button id="encryptionButton" name="encryptionButton" class="btn btn-primary" type="submit" ng-disabled="form.$invalid">Encryption</button>
+        </div>
+      </div>
+
+      <p>Encrypted Result: {{encryptionInfoResult}}</p>
+
+    </fieldset>
+  </form>
+
+  <br/>
+
+  <!--Decryption Form-->
+  <form name="formDecryption" ng-submit="decryption()" role="form" class="form-horizontal">
+    <fieldset>
+      <legend><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Decryption Form</legend>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="decryptionInfo">Information:</label>
+        <div class="col-md-4">
+          <input id="decryptionInfo" name="decryptionInfo" type="text" placeholder="Insert the information to be decrypted" class="form-control input-md" ng-model="decryptionInfo" required>
+          <span ng-show="formDecryption.decryptionInfo.$dirty && formDecryption.decryptionInfo.$error.required" class="help-block alert-danger">Info is required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="decryptionButton"></label>
+        <div class="col-md-4">
+          <button id="decryptionButton" name="decryptionButton" class="btn btn-success" type="submit" ng-disabled="formDecryption.$invalid">Decryption</button>
+        </div>
+      </div>
+
+      <p>Decrypted Result: {{decryptionInfoResult}}</p>
+
+    </fieldset>
+  </form>
 </div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="encryptionButton"></label>
-  <div class="col-md-4">
-    <button id="encryptionButton" name="encryptionButton" class="btn btn-primary" type="submit" ng-disabled="form.$invalid">Encryption</button>
-  </div>
-</div>
-
-<p>Encrypted Result: {{encryptionInfoResult}}</p>
-
-</fieldset>
-</form>
-
-<br/><br/>
-
-<!--Decryption Form-->
-<form name="formDecryption" ng-submit="decryption()" role="form" class="form-horizontal">
-<fieldset>
-
-<legend>Decryption Form</legend>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="decryptionInfo">Decryption Information:</label>
-  <div class="col-md-4">
-  <input id="decryptionInfo" name="decryptionInfo" type="text" placeholder="Insert the information to be decrypted" class="form-control input-md" ng-model="decryptionInfo" required>
-  <span ng-show="formDecryption.decryptionInfo.$dirty && formDecryption.decryptionInfo.$error.required" class="help-block alert-danger">Info is required</span>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="decryptionButton"></label>
-  <div class="col-md-4">
-    <button id="decryptionButton" name="decryptionButton" class="btn btn-success" type="submit" ng-disabled="formDecryption.$invalid">Decryption</button>
-  </div>
-</div>
-
-<p>Decrypted Result: {{decryptionInfoResult}}</p>
-
-</fieldset>
-</form>
